@@ -40,9 +40,6 @@ class KeywordArgumentsChecker:
             if not isinstance(node, ast.Call):
                 continue
 
-            if not isinstance(node.func, (ast.Name, ast.Attribute)):
-                continue
-
             if len(node.args) > self.max_pos_args:
                 function_name = self._get_name(node.func)
                 message = self.MESSAGE_TEMPLATE.format(function_name=function_name, number_of_args=len(node.args))
@@ -54,4 +51,10 @@ class KeywordArgumentsChecker:
 
     @staticmethod
     def _get_name(node: Any) -> str:
-        return node.id if hasattr(node, 'id') else node.attr
+        if hasattr(node, 'id'):
+            return node.id
+
+        if hasattr(node, 'attr'):
+            return node.attr
+
+        return 'unknown'

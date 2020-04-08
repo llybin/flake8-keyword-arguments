@@ -32,8 +32,6 @@ two_arguments(1, 2)
 two_arguments(one=1, two=2)
 multiple_arguments(one=1, two=2, three=3)
 multiple_arguments(1, 2, 3)
-
-globals()['multiple_arguments'](1, 2, 3)  # it is ok
 ```
 
 Usage:

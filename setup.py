@@ -10,7 +10,7 @@ def get_long_description() -> str:
 
 setup(
     name=package_name,
-    version='0.0.3',
+    version='0.1.0',
     description=(
         'A flake8 extension that is looking for function calls and '
         'forces to use keyword arguments if there are more than X arguments'
