@@ -1,5 +1,4 @@
 import ast
-from typing import Any, Generator, List, Tuple
 
 from flake8_keyword_arguments.utils import FlakeError
 
@@ -14,12 +13,12 @@ class KeywordArgumentsChecker:
 
     MESSAGE_TEMPLATE = "FKA01 {function_name}'s call uses {number_of_args} positional arguments, use keyword arguments."
 
-    def __init__(self, tree: ast.AST, filename: str) -> None:
+    def __init__(self, tree, filename):
         self.filename = filename
         self.tree = tree
 
     @classmethod
-    def add_options(cls, parser: Any) -> None:
+    def add_options(cls, parser):
         parser.add_option(  # pragma: no cover
             '--max-pos-args',
             type='int',
@@ -30,11 +29,11 @@ class KeywordArgumentsChecker:
         )
 
     @classmethod
-    def parse_options(cls, options: Any) -> None:
+    def parse_options(cls, options):
         cls.max_pos_args = int(options.max_pos_args)
 
-    def run(self) -> Generator[Tuple[int, int, str, type], None, None]:
-        errors: List[FlakeError] = []
+    def run(self):
+        errors = []
 
         for node in ast.walk(self.tree):
             if not isinstance(node, ast.Call):
@@ -50,7 +49,7 @@ class KeywordArgumentsChecker:
             yield error.line, error.column, error.message, type(self)
 
     @staticmethod
-    def _get_name(node: Any) -> str:
+    def _get_name(node):
         if hasattr(node, 'id'):
             return node.id
 

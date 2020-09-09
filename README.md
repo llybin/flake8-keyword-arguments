@@ -4,6 +4,8 @@ ___
 
 A flake8 extension that is looking for function calls and forces to use keyword arguments if there are more than X (default=2) arguments
 
+Fork for python 2.7
+
 
 ## Installation
 
@@ -45,7 +47,7 @@ test.py:15: [FKA01] two_arguments's call uses 2 positional arguments, use keywor
 test.py:18: [FKA01] multiple_arguments's call uses 3 positional arguments, use keyword arguments.
 ```
 
-Tested on Python 3.7.x and flake8 3.7.9.
+Tested on Python 2.7
 
 ## Error codes
 

@@ -3,7 +3,7 @@ from setuptools import find_packages, setup
 package_name = 'flake8_keyword_arguments'
 
 
-def get_long_description() -> str:
+def get_long_description():
     with open('README.md') as f:
         return f.read()
 
@@ -23,25 +23,23 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Software Development :: Quality Assurance',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 2.7',
     ],
     long_description=get_long_description(),
     long_description_content_type='text/markdown',
     packages=find_packages(),
-    python_requires='>=3.6',
+    python_requires='>=2.7',
     include_package_data=True,
     keywords='flake8',
     author='Viktor Chaptsev',
     author_email='viktor@chaptsev.ru',
-    install_requires=['flake8', 'setuptools', 'typing-extensions'],
+    install_requires=['flake8', 'setuptools'],
     entry_points={
         'flake8.extension': [
             'FKA = flake8_keyword_arguments.checker:KeywordArgumentsChecker',
         ],
     },
-    url='https://github.com/vchaptsev/flake8-keyword-arguments',
+    url='https://github.com/llybin/flake8-keyword-arguments',
     license='MIT',
     py_modules=[package_name],
     zip_safe=False,

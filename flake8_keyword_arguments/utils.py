@@ -1,8 +1,5 @@
-from dataclasses import dataclass
-
-
-@dataclass
-class FlakeError:
-    line: int
-    column: int
-    message: str
+class FlakeError(object):
+    def __init__(self, line, column, message):
+        self.line = line
+        self.column = column
+        self.message = message
